@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("n=");
+    scanf("%d",&n);
+
+    int v[1000];
+    printf("Introduceti cele %d elemente:\n", n);
+    for (int i=0;i<n;i++) {
+        scanf("%d",&v[i]);
+    }
+    int lungime_curenta=1,lungime_max=1;
+    int inceput_max=0,inceput_curent=0;
+
+    for(int i=1;i<n;i++) {
+        if(v[i]>=v[i - 1]) {
+            lungime_curenta++;
+        } else{
+            lungime_curenta = 1;
+            inceput_curent = i;
+        }
+        if(lungime_curenta>lungime_max) {
+            lungime_max=lungime_curenta;
+            inceput_max=inceput_curent;
+        }
+    }
+    printf("\nSecventa crescatoare maxima are %d elemente: ",lungime_max);
+    for (int i=inceput_max;i<inceput_max+lungime_max;i++) {
+        printf("%d ", v[i]);
+    }
+    return 0;
+}
