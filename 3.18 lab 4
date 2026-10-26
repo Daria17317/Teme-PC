@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main(void) {
+    int n,i,j;
+    printf("Dimensiunea matricei:");
+    scanf("%d",&n);
+    int a[100][100];
+    printf("Elementele matricei");
+    for(i=0;i<n;i++) {
+        for(j=0;j<n;j++) {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    int simetrie=1;
+    for(i=0;i<n;i++) {
+        for(j=i+1;j<n;j++) {
+            if (a[i][j]!=a[j][i]) {
+            simetrie=0;
+                break;
+            }
+        }
+        if (simetrie==0) {
+            break;
+        }
+    }
+    if (simetrie == 1) {
+        printf("\nMatricea este simetrica.\n");
+    } else {
+        printf("\nMatricea nu este simetrica.\n");
+    }
+
+    return 0;
+}
