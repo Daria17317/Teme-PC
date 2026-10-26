@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    double x;
+    printf("Introduceti numerele");
+    scanf("%d",&n);
+    double v[n];
+    for (int i=0;i<n;i++) {
+        printf("v[%d]=",i);
+        scanf("%lf",&v[i]);
+    }
+    printf("introduceti numarul");
+    scanf("%lf",&x);
+    int stanga=0, dreapta=n-1, pozitie=-1;
+    while (stanga <= dreapta) {
+        int mijloc = stanga + (dreapta - stanga) / 2;
+        if (v[mijloc]==x) {
+            pozitie = mijloc;
+            break;
+        }
+        else if (v[mijloc]<x) {
+            stanga=mijloc+1;
+        }
+        else
+        {
+            dreapta=mijloc-1;
+        }
+    }
+
+    if (pozitie!=-1){
+        printf("Valoarea %.2lf se gaseste pe pozitia %d (index %d).\n", x, pozitie + 1, pozitie);
+    } else {
+        printf("Valoarea %.2lf nu se gaseste in sir.\n", x);
+    }
+
+    return 0;
+}
